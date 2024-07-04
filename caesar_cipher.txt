@@ -1,0 +1,27 @@
+def caesar_cipher(text, shift, encrypt=True):
+    result = ""
+    for char in text:
+        if char.isalpha():
+            shift_amount = shift if encrypt else -shift
+            if char.islower():
+                result += chr((ord(char) - ord('a') + shift_amount) % 26 + ord('a'))
+            else:
+                result += chr((ord(char) - ord('A') + shift_amount) % 26 + ord('A'))
+        else:
+            result += char
+    return result
+
+user_input = input("Enter a message to encrypt: ")
+shift = int(input("Enter a shift value: "))
+
+encrypted_message = caesar_cipher(user_input, shift, encrypt=True)
+print("Encrypted message:", encrypted_message)
+
+decrypted_message = caesar_cipher(encrypted_message, shift, encrypt=False)
+print("Decrypted message:", decrypted_message)
+
+
+Output:
+
+Encrypted message: uck
+Decrypted message: sai
